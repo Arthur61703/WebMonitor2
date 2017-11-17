@@ -35,17 +35,17 @@ public class WebMonitor {
 				b=m.length();
 				sb2.append(m);
 			}
-			String log = "Ë¢ĞÂ´ÎÊı£º"+i+",Ô­ÍøÒ³´óĞ¡£º"+a+",ÍøÒ³±ä¶¯×Ö½Ú´óĞ¡£º"+(a-b);
+			String log = "åˆ·æ–°æ¬¡æ•°ï¼š"+i+",åŸç½‘é¡µå¤§å°ï¼š"+a+",ç½‘é¡µå˜åŠ¨å­—èŠ‚å¤§å°ï¼š"+(a-b);
 			writer.write(log);
 			writer.newLine();
 			writer.flush();
 			System.out.println(log);
-			if(sb2.toString().contains("<span>¸Õ¸Õ</span>")){//Í¨¹ı±È¶ÔÍøÒ³ÖĞÊÇ·ñÓĞ¸üĞÂ×ÖÑù£¨¸ü×¼È·£©			
-				/**Èç¹ûÍøÒ³ÄÚÈİÓĞ±ä»¯£¬Ôò´ò¿ªÒôÀÖKiss the rain**/
+			if(sb2.toString().contains("åˆšåˆš</span>")){//é€šè¿‡æ¯”å¯¹ç½‘é¡µä¸­æ˜¯å¦æœ‰æ›´æ–°å­—æ ·ï¼ˆæ›´å‡†ç¡®ï¼‰			
+				/**å¦‚æœç½‘é¡µå†…å®¹æœ‰å˜åŒ–ï¼Œåˆ™æ‰“å¼€éŸ³ä¹Kiss the rain**/
 				MP3Player mp3 = new MP3Player(System.getProperty("user.dir")+"/src/kiss the rain.mp3");
 				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				String time = df.format(new Date());
-				System.out.println(time);// new Date()Îª»ñÈ¡µ±Ç°ÏµÍ³Ê±¼ä
+				System.out.println(time);// new Date()ä¸ºè·å–å½“å‰ç³»ç»Ÿæ—¶é—´
 				writer.write(time);
 				writer.newLine();
 				writer.write("---------------------------------------------------------");
@@ -62,14 +62,14 @@ public class WebMonitor {
 		fos.close();
 	}
 	public static BufferedReader createStream() throws MalformedURLException, IOException, UnsupportedEncodingException {
-		/**¶ÁÈ¡Íâ²¿ÅäÖÃÎÄ¼ş**/
+		/**è¯»å–å¤–éƒ¨é…ç½®æ–‡ä»¶**/
 		File path = new File(System.getProperty("user.dir")+"/src/path.txt");
 		FileInputStream fin = new FileInputStream(path);
 		BufferedReader br = new BufferedReader(new InputStreamReader(fin,"utf-8"));
 		String str=br.readLine();
 		fin.close();
 		br.close();
-		/**Á¬½ÓÖªºõ¸öÈËÖ÷Ò³**/
+		/**è¿æ¥çŸ¥ä¹ä¸ªäººä¸»é¡µ**/
 		URL url = new URL(str);
 		
 		HttpURLConnection urlcon = (HttpURLConnection)url.openConnection();
@@ -77,9 +77,9 @@ public class WebMonitor {
 		urlcon.setConnectTimeout(60000);
 		urlcon.setReadTimeout(60000);
 		urlcon.connect();
-		/**»ñÈ¡Êä³öÁ÷£¨×Ö½Ú×ª×Ö·ûÁ÷£©**/
+		/**è·å–è¾“å‡ºæµï¼ˆå­—èŠ‚è½¬å­—ç¬¦æµï¼‰**/
 		InputStream is = urlcon.getInputStream();
-		BufferedReader buffer = new BufferedReader(new InputStreamReader(is,"utf-8"));//Ö¸¶¨¶ÁÈëµÄ±àÂë
+		BufferedReader buffer = new BufferedReader(new InputStreamReader(is,"utf-8"));//æŒ‡å®šè¯»å…¥çš„ç¼–ç 
 		return buffer;
 	}
 		
